@@ -32,7 +32,18 @@ function split(str: string) {
   return { content: str };
 }
 
-function parse(str: string, options?: yaml.LoadOptions) {
+export type ParseResult = Record<string, any> &
+	Partial<{
+		_content: string;
+		title: string;
+		description: string;
+		thumbnail: string;
+		date: any;
+		updated: any;
+		permalink: string;
+	}>;
+
+function parse(str: string, options: yaml.LoadOptions = {}) {
   if (typeof str !== 'string') throw new TypeError('str is required!');
 
   const splitData = split(str);
@@ -45,7 +56,7 @@ function parse(str: string, options?: yaml.LoadOptions) {
   if (splitData.separator.startsWith(';')) {
     data = parseJSON(raw);
   } else {
-    data = <any>parseYAML(raw, options);
+    data = parseYAML(raw, options) as any;
   }
 
   if (!data) return { _content: str };
@@ -100,7 +111,7 @@ interface Options {
 	separator?: string;
 }
 
-function stringify(obj: Record<string, any>, options: Options = {}) {
+function stringify(obj: Record<string, any>, options: Options = {}): string {
   if (!obj) throw new TypeError('obj is required!');
 
   const { _content: content = '' } = obj;
