@@ -353,6 +353,23 @@ describe('Front-matter', () => {
       const data = yfm.parse(str);
       parseInt(data.date.getTime() / 1000, 10).should.eql(parseInt(unixTime / 1000, 10));
     });
+
+    it('hexo post yaml', () => {
+      const current = new Date();
+      const date = new Date(current.getTime() - (current.getTimezoneOffset() * 60 * 1000)).toJSON();
+      const str = [
+        '---',
+        'title: "hello world"',
+        'date: "' + date + '"',
+        'description: "description hello world"',
+        '---',
+        'bar'
+      ].join('\n');
+      const parse = yfm.parse(str);
+      should.equal(parse.title, 'hello world');
+      should.equal(parse.description, 'description hello world');
+      should.equal(parse.date, date);
+    });
   });
 
   describe('stringify', () => {

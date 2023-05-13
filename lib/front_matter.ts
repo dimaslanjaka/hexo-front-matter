@@ -32,16 +32,46 @@ function split(str: string) {
   return { content: str };
 }
 
-export type ParseResult = Record<string, any> &
-	Partial<{
-		_content: string;
-		title: string;
-		description: string;
-		thumbnail: string;
-		date: any;
-		updated: any;
-		permalink: string;
-	}>;
+/**
+ * Hexo Front Matter Parse Result
+ * * required while used in hexo plugins or themes
+ * * to identify page metadata properties
+ */
+export type HexoFMResult = Partial<{
+
+  /**
+   * title of page
+   */
+	title: string;
+
+  /**
+   * description of page
+   */
+	description: string;
+
+  /**
+   * thumbnail of page
+   */
+	thumbnail: string;
+
+  /**
+   * page created date
+   */
+	date: any;
+
+  /**
+   * page modified date
+   */
+	updated: any;
+
+  /**
+   * page permalink
+   */
+	permalink: string;
+}>;
+export type ParseResult = Record<string, any> & {
+	_content: string;
+} & HexoFMResult;
 
 function parse(str: string, options: yaml.LoadOptions = {}) {
   if (typeof str !== 'string') throw new TypeError('str is required!');
@@ -141,8 +171,8 @@ type YamlMergedOpts = Options & yaml.DumpOptions;
 function stringifyYAML(obj: Record<string, any>, options: YamlMergedOpts) {
   const keys = Object.keys(obj);
   const data = {};
-  const nullKeys = [];
-  const dateKeys = [];
+  const nullKeys: string[] = [];
+  const dateKeys: string[] = [];
   let key: string, value: any, i: number, len: number;
 
   for (i = 0, len = keys.length; i < len; i++) {
