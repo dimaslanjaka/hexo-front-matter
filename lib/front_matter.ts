@@ -210,9 +210,9 @@ function stringifyJSON(obj) {
   return (
     JSON.stringify(obj, null, '  ')
     // Remove indention
-      .replace(/\n {2}/g, () => '\n')
+      .replace(/\r?\n {2}/g, () => '\n')
     // Remove prefixing and trailing braces
-      .replace(/^{\n|}$/g, '')
+      .replace(/^{\r?\n|}$/g, '')
   );
 }
 
