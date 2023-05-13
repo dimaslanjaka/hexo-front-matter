@@ -141,8 +141,8 @@ type YamlMergedOpts = Options & yaml.DumpOptions;
 function stringifyYAML(obj: Record<string, any>, options: YamlMergedOpts) {
   const keys = Object.keys(obj);
   const data = {};
-  const nullKeys = [];
-  const dateKeys = [];
+  const nullKeys: string[] = [];
+  const dateKeys: string[] = [];
   let key: string, value: any, i: number, len: number;
 
   for (i = 0, len = keys.length; i < len; i++) {
