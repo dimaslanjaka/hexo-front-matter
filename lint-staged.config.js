@@ -3,9 +3,7 @@
  */
 const config = {
   '*.ts': 'eslint --fix',
-  '*.js': 'eslint --fix',
-  '*.json': 'npx prettier --write',
-  '*.yml': 'npx prettier --write'
+  '*.js': 'eslint --fix'
 };
 
 module.exports = config;
