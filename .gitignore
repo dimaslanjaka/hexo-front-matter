@@ -7,3 +7,4 @@ coverage
 dist
 package-lock.json
 .vscode
+.idea

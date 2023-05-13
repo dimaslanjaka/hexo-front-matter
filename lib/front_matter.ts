@@ -39,34 +39,34 @@ function split(str: string) {
  */
 export type HexoFMResult = Partial<{
 
-	/**
-	 * title of page
-	 */
+  /**
+   * title of page
+   */
 	title: string;
 
-	/**
-	 * description of page
-	 */
+  /**
+   * description of page
+   */
 	description: string;
 
-	/**
-	 * thumbnail of page
-	 */
+  /**
+   * thumbnail of page
+   */
 	thumbnail: string;
 
-	/**
-	 * page created date
-	 */
+  /**
+   * page created date
+   */
 	date: any;
 
-	/**
-	 * page modified date
-	 */
+  /**
+   * page modified date
+   */
 	updated: any;
 
-	/**
-	 * page permalink
-	 */
+  /**
+   * page permalink
+   */
 	permalink: string;
 }>;
 export type ParseResult = Record<string, any> & {
@@ -210,9 +210,9 @@ function stringifyJSON(obj) {
   return (
     JSON.stringify(obj, null, '  ')
     // Remove indention
-      .replace(/\r?\n {2}/g, () => '\n')
+      .replace(/\n {2}/g, () => '\n')
     // Remove prefixing and trailing braces
-      .replace(/^{\r?\n|}$/g, '')
+      .replace(/^{\n|}$/g, '')
   );
 }
 
