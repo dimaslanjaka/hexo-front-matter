@@ -32,9 +32,7 @@ function split(str: string) {
   return { content: str };
 }
 
-export type ParseResult = Record<string, any> &
-	Partial<{
-		_content: string;
+export type ParseResult = Record<string, any> & { _content: string } & Partial<{
 		title: string;
 		description: string;
 		thumbnail: string;
