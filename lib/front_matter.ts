@@ -206,13 +206,13 @@ function stringifyYAML(obj: Record<string, any>, options: YamlMergedOpts) {
   return result;
 }
 
-function stringifyJSON(obj) {
+function stringifyJSON(obj: Record<string, any>) {
   return (
     JSON.stringify(obj, null, '  ')
     // Remove indention
-    .replace(/\r?\n {2}/g, () => '\n')
+      .replace(/\r?\n {2}/g, () => '\n')
     // Remove prefixing and trailing braces
-    .replace(/^{\r?\n|}$/g, '')
+      .replace(/^{\r?\n|}$/g, '')
   );
 }
 
