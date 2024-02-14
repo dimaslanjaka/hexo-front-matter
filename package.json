@@ -3,7 +3,6 @@
   "version": "4.2.1",
   "description": "Front-matter parser.",
   "main": "dist/front_matter.js",
-  "types": "./dist/front_matter.d.ts",
   "scripts": {
     "prepublish ": "npm run clean && npm run build",
     "build": "tsc -b",

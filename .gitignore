@@ -5,6 +5,10 @@ tmp/
 .idea/
 coverage
 dist
-package-lock.json
 .vscode
 .idea
+**/package-lock.json
+**/yarn.lock
+*pnpm-lock.yml
+*pnpm-lock.yaml
+**/.yarn
