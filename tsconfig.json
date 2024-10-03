@@ -1,4 +1,10 @@
 {
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "types": ["node", "mocha", "chai"]
+    }
+  },
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
